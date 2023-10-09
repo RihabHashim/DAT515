@@ -1,0 +1,19 @@
+version: '3'
+services:
+  php:
+    image: group05/docker_group05:latest  
+    ports:
+      - "8088:80"
+    volumes:
+      - ./index.php:/var/www/html/index.php
+      - ./submit.php:/var/www/html/submit.php
+      - app-sqldata:/var/www/html/data
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: contacts
+
+
+  volumes:
+    app-sqldata:   # Define the volume name 'app-sqldata'
